@@ -3,8 +3,13 @@ package main
 import (
 	"math/rand"
 	"reflect"
+	"strings"
 	"time"
+	"unicode"
 	"unsafe"
+
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
 )
 
 // NomeParaLinhas : converte o nome para o nome em linhas
@@ -62,4 +67,25 @@ func replaceAtIndex(str string, replacement rune, index int) string {
 	bytes := strToBytes(str)
 	bytes[index] = byte(replacement)
 	return bytesToStr(bytes)
+}
+
+func isMn(r rune) bool {
+	return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
+}
+
+func removeAccent(str string) string {
+	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
+	result, _, _ := transform.String(t, str)
+	return result
+}
+
+// NormalizaStr : retorna uma string sem espaços e caracteres especiais
+func NormalizaStr(str string) string {
+	var minuscula string = strings.ToLower(str)
+	minuscula = removeAccent(minuscula)
+
+	// o Replacer troca todos os caracteres dentro da string
+	var replacer = strings.NewReplacer(" ", "", "-", "")
+
+	return replacer.Replace(minuscula)
 }
