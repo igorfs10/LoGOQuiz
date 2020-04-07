@@ -15,7 +15,7 @@ func main() {
 		logos = append(logos, false)
 	}
 	fmt.Println("My favorite number is", rand.Intn(10), "na hora", time.Now())
-	var logo Logo = PegarLogo(0)
+	var logo Logo = PegarLogo(1)
 	//ImprimirLogo(logo.Caminho)
 	// 0 = 0, 1 = 2, 2 = 5, 3 = 7
 	var nome string = NomeParaLinhas(logo.Nome)

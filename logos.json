@@ -2,5 +2,9 @@
     {
         "nome":"Github",
         "caminho":"github.txt"
+    },
+    {
+        "nome":"Linux",
+        "caminho":"linux.txt"
     }
 ]
