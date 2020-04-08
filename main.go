@@ -36,5 +36,20 @@ func main() {
 	nome = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
+	nome = UsarDica(nome, logo.Nome)
+	fmt.Println(nome)
+
+	nome = UsarDica(nome, logo.Nome)
+	fmt.Println(nome)
+
+	nome = UsarDica(nome, logo.Nome)
+	fmt.Println(nome)
+
+	nome = UsarDica(nome, logo.Nome)
+	fmt.Println(nome)
+
+	nome = UsarDica(nome, logo.Nome)
+	fmt.Println(nome)
+
 	fmt.Println(NormalizaStr("Olá mundo-novo"))
 }

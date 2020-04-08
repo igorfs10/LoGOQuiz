@@ -30,21 +30,30 @@ func NomeParaLinhas(nome string) string {
 	return nomeLinha
 }
 
+/*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
+
 // UsarDica : Muda uma linha do nome para a letra do nome
 func UsarDica(nomeLinha string, nome string) string {
-	var numChar int
-	var numLinha int
-	for {
-		rand.Seed(time.Now().UnixNano())
-		// Intn retorna um inteiro entre 0 e n -1
-		numChar = rand.Intn(len(nome))
-		numLinha = numChar * 2
-		if string(nomeLinha[numLinha]) == "_" {
-			break
+	// Verifica se a string tem "_" para substituir
+	if strings.Contains(nomeLinha, "_") {
+		var numChar int
+		var numLinha int
+		for {
+			rand.Seed(time.Now().UnixNano())
+			// Intn retorna um inteiro entre 0 e n -1
+			numChar = rand.Intn(len(nome))
+			numLinha = numChar * 2
+			if string(nomeLinha[numLinha]) == "_" {
+				break
+			}
 		}
+		return replaceAtIndex(nomeLinha, rune(nome[numChar]), numLinha)
 	}
-	return replaceAtIndex(nomeLinha, rune(nome[numChar]), numLinha)
+	// Tratar para retornar um erro se não estiver carácter para substituir
+	return nomeLinha
 }
+
+/*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
 
 // Converte string em bytes
 func strToBytes(str string) []byte {
