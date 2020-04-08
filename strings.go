@@ -30,20 +30,23 @@ func NomeParaLinhas(nome string) string {
 	return nomeLinha
 }
 
-// UsarDica : Muda uma linha do nome para a letra
+// UsarDica : Muda uma linha do nome para a letra do nome
 func UsarDica(nomeLinha string, nome string) string {
-	rand.Seed(time.Now().UnixNano())
-	// Intn retorna um inteiro entre 0 e n -1
-	var numChar int = rand.Intn(len(nome))
-	var numLinha int = numChar * 2
-	for string(nomeLinha[numLinha]) != "_" {
+	var numChar int
+	var numLinha int
+	for {
 		rand.Seed(time.Now().UnixNano())
+		// Intn retorna um inteiro entre 0 e n -1
 		numChar = rand.Intn(len(nome))
 		numLinha = numChar * 2
+		if string(nomeLinha[numLinha]) == "_" {
+			break
+		}
 	}
 	return replaceAtIndex(nomeLinha, rune(nome[numChar]), numLinha)
 }
 
+// Converte string em bytes
 func strToBytes(str string) []byte {
 	stringHeader := (*reflect.StringHeader)(unsafe.Pointer(&str))
 	bytesHeader := &reflect.SliceHeader{
@@ -54,6 +57,7 @@ func strToBytes(str string) []byte {
 	return *(*[]byte)(unsafe.Pointer(bytesHeader))
 }
 
+// Converte bytes em string
 func bytesToStr(bytes []byte) string {
 	bytesHeader := (*reflect.SliceHeader)(unsafe.Pointer(&bytes))
 	stringHeader := &reflect.StringHeader{
@@ -63,6 +67,7 @@ func bytesToStr(bytes []byte) string {
 	return *(*string)(unsafe.Pointer(stringHeader))
 }
 
+// Muda um carácter passando o indíce do vetor usando as funções de conversão de string para uma performance maior
 func replaceAtIndex(str string, replacement rune, index int) string {
 	bytes := strToBytes(str)
 	bytes[index] = byte(replacement)
@@ -73,6 +78,7 @@ func isMn(r rune) bool {
 	return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
 }
 
+// Função para remover acento das letras
 func removeAccent(str string) string {
 	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
 	result, _, _ := transform.String(t, str)
@@ -84,7 +90,7 @@ func NormalizaStr(str string) string {
 	var minuscula string = strings.ToLower(str)
 	minuscula = removeAccent(minuscula)
 
-	// o Replacer troca todos os caracteres dentro da string
+	// O Replacer troca todos os caracteres dentro da string, sempre trocando o carácter do parâmetro trocando pelo caracter seguinte
 	var replacer = strings.NewReplacer(" ", "", "-", "")
 
 	return replacer.Replace(minuscula)
