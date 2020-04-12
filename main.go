@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 	"time"
 )
 
@@ -27,29 +28,54 @@ func main() {
 
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome = UsarDica(nome, logo.Nome)
+	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
 	fmt.Println(NormalizaStr("Olá mundo-novo"))
 }
+
+/*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
+
+// UsarDica : Muda uma linha do nome para a letra do nome
+func UsarDica(nomeLinha string, nome string) (string, bool) {
+	// Verifica se a string tem "_" para substituir
+	if strings.Contains(nomeLinha, "_") {
+		var numChar int
+		var numLinha int
+		for {
+			rand.Seed(time.Now().UnixNano())
+			// Intn retorna um inteiro entre 0 e n -1
+			numChar = rand.Intn(len(nome))
+			numLinha = numChar * 2
+			if string(nomeLinha[numLinha]) == "_" {
+				break
+			}
+		}
+		return ReplaceAtIndex(nomeLinha, rune(nome[numChar]), numLinha), true
+	}
+	// Tratar para retornar um erro se não estiver carácter para substituir
+	return nomeLinha, false
+}
+
+/*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
