@@ -26,3 +26,4 @@
 build/
 
 # End of https://www.gitignore.io/api/go
+__debug_bin

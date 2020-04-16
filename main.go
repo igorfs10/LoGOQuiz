@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
+	"os"
 	"strings"
 	"time"
 )
@@ -11,6 +13,7 @@ var logos []bool
 var quantidadeLogo int
 
 func main() {
+	reader := bufio.NewReader(os.Stdin)
 	quantidadeLogo = PegarQuantidadeLogos()
 	for i := 0; i < quantidadeLogo; i++ {
 		logos = append(logos, false)
@@ -31,28 +34,13 @@ func main() {
 	nome, _ = UsarDica(nome, logo.Nome)
 	fmt.Println(nome)
 
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
-	nome, _ = UsarDica(nome, logo.Nome)
-	fmt.Println(nome)
-
 	fmt.Println(NormalizaStr("Olá mundo-novo"))
+
+	var storageString string
+	storageString, _ = reader.ReadString('\n')
+	fmt.Println(storageString)
+
+	printMenu()
 }
 
 /*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
@@ -79,3 +67,11 @@ func UsarDica(nomeLinha string, nome string) (string, bool) {
 }
 
 /*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
+
+func printMenu() {
+	fmt.Println("————————————————————————————————————————————————————————————————————————————————————————————————————")
+	fmt.Println("|  –––––––––                                                                            ––––––––   |")
+	fmt.Println("| |1 - JOGAR|                                                                          |2 - SAIR|  |")
+	fmt.Println("|  –––––––––                                                                            ––––––––   |")
+	fmt.Println("————————————————————————————————————————————————————————————————————————————————————————————————————")
+}

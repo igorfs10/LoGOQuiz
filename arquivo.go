@@ -33,6 +33,7 @@ func ImprimirLogo(arquivoLogo string) {
 		line := scanner.Text()
 		fmt.Println(line)
 	}
+	fmt.Println("")
 }
 
 // PegarQuantidadeLogos : Pega a quantidade de logos que existem
