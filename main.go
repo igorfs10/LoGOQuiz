@@ -42,7 +42,8 @@ func main() {
 
 	printMenu()
 
-	carregaIdiomas()
+	var language LanguageItens
+	CarregaIdioma(&language)
 }
 
 /*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/

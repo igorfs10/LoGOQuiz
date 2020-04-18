@@ -43,14 +43,18 @@ func PegarQuantidadeLogos() int {
 	return len(logos)
 }
 
-func carregaIdiomas() {
+// CarregaIdioma : Função para escolher o idioma
+func CarregaIdioma(language *LanguageItens) {
 	var idiomas []Language
 	JSONParaVar(&idiomas, "languages.json")
 	for {
-		fmt.Println("Choose language")
+		fmt.Println(" -----------------------------------------")
+		fmt.Println("|             Choose language             |")
+		fmt.Println(" -----------------------------------------")
 		for i := int8(0); i < int8(len(idiomas)); i++ {
-			fmt.Printf("%v - %v\n", idiomas[i].Sigla, idiomas[i].Nome)
+			fmt.Printf("  %v - %v\n", idiomas[i].Sigla, idiomas[i].Nome)
 		}
+		fmt.Println(" -----------------------------------------")
 		break
 	}
 }
