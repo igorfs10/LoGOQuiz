@@ -42,3 +42,15 @@ func PegarQuantidadeLogos() int {
 	JSONParaVar(&logos, "logos.json")
 	return len(logos)
 }
+
+func carregaIdiomas() {
+	var idiomas []Language
+	JSONParaVar(&idiomas, "languages.json")
+	for {
+		fmt.Println("Choose language")
+		for i := int8(0); i < int8(len(idiomas)); i++ {
+			fmt.Printf("%v - %v\n", idiomas[i].Sigla, idiomas[i].Nome)
+		}
+		break
+	}
+}

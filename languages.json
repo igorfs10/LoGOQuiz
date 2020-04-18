@@ -1,0 +1,12 @@
+[
+    {
+        "nome":"Português - Brasileiro",
+        "sigla":"pt-br",
+        "caminho":"pt-br.json"
+    },
+    {
+        "nome":"English",
+        "sigla":"en-us",
+        "caminho":"en-us.json"
+    }
+]

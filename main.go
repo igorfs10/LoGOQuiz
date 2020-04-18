@@ -41,6 +41,8 @@ func main() {
 	fmt.Println(storageString)
 
 	printMenu()
+
+	carregaIdiomas()
 }
 
 /*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
@@ -69,9 +71,9 @@ func UsarDica(nomeLinha string, nome string) (string, bool) {
 /*------------- Tratar para retornar um erro se não possuir carácter para substituir -----------*/
 
 func printMenu() {
-	fmt.Println("————————————————————————————————————————————————————————————————————————————————————————————————————")
-	fmt.Println("|  –––––––––                                                                            ––––––––   |")
-	fmt.Println("| |1 - JOGAR|                                                                          |2 - SAIR|  |")
-	fmt.Println("|  –––––––––                                                                            ––––––––   |")
-	fmt.Println("————————————————————————————————————————————————————————————————————————————————————————————————————")
+	fmt.Println("——————————————————————————————————————————————————————————————————————————————————————————————————")
+	fmt.Println(" 1 - $TXT_JOGAR      2 - $TXT_SAIR")
+	fmt.Println("——————————————————————————————————————————————————————————————————————————————————————————————————")
+	// %v imprime no formato do item passado
+	fmt.Printf("%v ---\n", "test")
 }
